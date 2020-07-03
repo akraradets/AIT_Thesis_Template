@@ -1,0 +1,144 @@
+% set document class as 'report'
+% set default font size as '12pt'
+\documentclass[12pt]{report}
+
+\usepackage[utf8]{inputenc}
+
+% ====== for reference clickable ======
+\usepackage{hyperref}
+% ====== for graphics ======
+\usepackage{graphicx} % includegraphic 
+\usepackage{placeins} % FloatBarrier 
+% ====== set Font Family ======
+\usepackage{mathptmx} % Font: Times
+% ====== set margin here ======
+\usepackage{geometry}
+\geometry{
+ a4paper, % set A4 paper
+ right=1in, % set margin 1 inch
+ bottom=1in, % set margin 1 inch
+ top=1in, % set margin 1 inch
+ left=3cm % set margin 1.5 inch
+ }
+% ====== for styling Table of Content =====
+\usepackage{tocloft}
+% ====== for styling 'chapter' and 'section' ...
+\usepackage{titlesec}
+
+% Chapter
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\large\center} % format
+{CHAPTER \thechapter} % label
+{0.6em} % sep
+{} % before-code
+[] % after-code
+% remove space above and set below 28pt space chapter
+\titlespacing*{\chapter}{0pt}{-35pt}{28pt}
+
+% Section (Heading, Level 2)
+\titleformat
+{\section} % command
+[hang] % shape
+{\bfseries} % format
+{\thesection} % label
+{0em} % sep
+{ } % before-code
+[] % after-code
+% add 1.5 line space above section and remove line space after it
+\titlespacing*{\section}{0pt}{1.6em}{0pt}
+
+% subSection (Heading, Level 3)
+\titleformat
+{\subsection} % command
+[hang] % shape
+{\bfseries \itshape} % format
+{\thesubsection} % label
+{0em} % sep
+{ } % before-code
+[] % after-code
+% add 0 line space above section and remove line space after it
+\titlespacing*{\subsection}{0pt}{0em}{0pt}
+
+% subsubSection (Heading, Level 4)
+\titleformat
+{\subsubsection} % command
+[runin] % shape
+{\bfseries} % format
+{\thesubsubsection} % label
+{0em} % sep
+{ } % before-code
+[] % after-code
+% 0.5inch indent, 0 line space above, 1 space after header
+\titlespacing*{\subsubsection}{0.5in}{0em}{1ex}
+
+% ====== Indent ======
+% By default, the first paragraph is not indent - we need this package for indentation
+\usepackage{indentfirst}
+% ====== list + enum ======
+\usepackage{enumitem}
+% Set indent lenght for itemize and enumerate
+\setlist[itemize]{left=0.5in}
+\setlist[enumerate]{left=0.5in}
+% Remove separation between item
+\setlist{nosep}
+% ====== caption styling ======
+\usepackage{caption}
+\DeclareCaptionFormat{aitformat}{\textbf{#1} #2 \textit{#3}}
+% justification = RaggedRight : Caption start on the left
+% singlelinecheck = false     : Force caption to start on the left
+% labelsep = newline          : separate Table 1.1 and label
+\captionsetup{format = aitformat,
+              justification = RaggedRight,
+              singlelinecheck = false,
+              labelsep = newline}
+              
+% ====== References ======
+\usepackage[notocbib]{apacite}
+
+% ====== Document begins here ======
+\begin{document}
+    % Set counter depth up to subsubsection (heading, level 4)
+    \setcounter{secnumdepth}{3}
+    
+    % ====== include other section ======
+    \include{1-title}
+    
+    % Show page numbering as 'roman'
+    \pagenumbering{roman}
+    % Start page counter as 2
+    \setcounter{page}{2}
+    
+    \include{2-acknowledgment}
+    \include{3-abstract}
+    \include{4-tableOfContent}
+    \include{5-listOfTable}
+    \include{6-listOfFigure}
+    
+    % Start page counter as 1
+    \setcounter{page}{1}
+    % Show page numbering as 'arabic'
+    \pagenumbering{arabic}
+    \include{7-introduction}
+    % \include{0-chapterLayout}
+    \include{8-literatureReview}
+    \include{9-methodology}
+    \include{10-results}
+    \include{11-conclusion}
+    
+    % ====== Reference part ======
+    % https://ctan.math.illinois.edu/macros/latex/contrib/apacite/apacite.pdf
+    \addcontentsline{toc}{part}{REFERENCES}
+    % change page title
+    \renewcommand\bibname{REFERENCES}
+    \bibliographystyle{apacite}
+    \bibliography{references}
+    % ====== ======
+    \addtocontents{toc}{\bf{APPENDICES}}
+    \include{appendix-a}
+    \include{appendix-b}
+    
+\end{document}
+
+

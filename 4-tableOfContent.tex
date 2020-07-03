@@ -1,0 +1,33 @@
+% Rename table of content to CONTENTS
+\renewcommand\contentsname{\begin{center}
+  \fontsize{14}{17}\selectfont{\bf{CONTENTS}}
+\end{center}}
+% set space above title
+\renewcommand{\cftbeforetoctitleskip}{-35pt}
+% set space below title
+\renewcommand{\cftaftertoctitleskip}{0em}
+% after title, skip 3 spaces and write 'page' on the right
+\renewcommand{\cftaftertoctitle}{%
+  \vspace{3em}
+  \hfill{\textbf{Page}}
+}
+% Remove . from table of content
+\renewcommand{\cftdot}{}
+
+% styling part:
+\renewcommand{\cftpartfont}{\fontsize{12}{14}\selectfont\bf} % set font bold for page name
+\renewcommand{\cftpartpagefont}{\fontsize{12}{14}\selectfont\bf} % set font size and bold for page number
+\setlength{\cftbeforepartskip}{0pt} % set line space
+
+% styling chapter:
+\renewcommand{\cftchapfont}{\bf{CHAPTER} \fontsize{12}{14}\selectfont\bf} % set font size bold, leading with 'CHAPTER'
+\renewcommand{\cftchappagefont}{\fontsize{12}{14}\selectfont\bf} % set font size and bold for page number
+\setlength{\cftbeforechapskip}{0pt} % set line space
+\setlength{\cftsecindent}{4.5em}
+\setlength{\cftsubsecindent}{7em}
+
+% set dept of contents
+\setcounter{tocdepth}{2}
+
+% Print content
+\tableofcontents

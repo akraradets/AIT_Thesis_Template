@@ -1,0 +1,27 @@
+\addcontentsline{toc}{part}{LIST OF FIGURES}
+
+% Rename List of Tables to CONTENTS
+\renewcommand\listfigurename{\begin{center}
+  \fontsize{14}{17}\selectfont{LIST OF FIGURES}
+\end{center}}
+% set space above title
+\renewcommand{\cftbeforeloftitleskip}{-25pt}
+% set space below title
+\renewcommand{\cftafterloftitleskip}{0em}
+% after title, skip 3 spaces and write 'page' on the right
+\renewcommand{\cftafterloftitle}{%
+  \vspace{3em}
+  \textbf{Figures}\hfill{\textbf{Page}}
+}
+
+% remove indent
+\renewcommand{\cftfigindent}{0pt}
+% add 'Table' before numbering
+\renewcommand{\cftfigpresnum}{Figure~}
+% indent the table caption
+\renewcommand{\cftfignumwidth}{4.5em}
+
+\begingroup
+    \renewcommand*{\addvspace}[1]{}
+    \listoffigures
+\endgroup
